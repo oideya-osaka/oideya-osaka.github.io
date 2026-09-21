@@ -75,7 +75,9 @@
     padding-top: 16px; padding-bottom: 16px;
     color: var(--ink); box-shadow: 0 1px 0 var(--line-soft);
   }
-  .nav-logo { font-size: 21px; letter-spacing: 0.04em; }
+  .nav-logo { font-size: 21px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+  .nav-logo img { width: 32px; height: 32px; object-fit: contain; display: block; filter: brightness(0) invert(1); transition: filter 0.35s ease; }
+  header.solid .nav-logo img { filter: none; }
   .nav-links { display: flex; align-items: center; gap: 26px; font-size: 13px; font-weight: 300; letter-spacing: 0.03em; }
   .nav-cta {
     padding: 9px 20px; border-radius: 2px; background: var(--accent); color: var(--cream) !important;
@@ -145,7 +147,7 @@
   .gallery-stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
   /* ── AMENITIES ── */
-  .amenities { background: var(--bg-sub); display: flex; gap: 56px; flex-wrap: wrap; }
+  .amenities { background: var(--bg-sub); display: flex; gap: 56px; flex-wrap: wrap; padding: clamp(70px, 10vw, 120px) var(--gutter); }
   .amenities-text { flex: 1 1 300px; max-width: 380px; }
   .amenities-text h2 { font-size: clamp(20px,2.8vw,28px); line-height: 1.7; font-weight: 500; margin: 0 0 18px; }
   .amenities-text p { font-size: 14px; line-height: 2; font-weight: 300; color: var(--ink-2); margin: 0; }
@@ -163,7 +165,7 @@
   .guide-item p { font-size: 13px; font-weight: 300; color: var(--ink-2); line-height: 1.9; margin: 0; }
 
   /* ── LOCAL AREA ── */
-  .local-area { background: var(--bg-sub); }
+  .local-area { background: var(--bg-sub); padding: clamp(70px, 10vw, 120px) var(--gutter); }
   .local-head { max-width: 540px; margin-bottom: 48px; }
   .local-head h2 { font-size: clamp(22px,3vw,30px); line-height: 1.7; font-weight: 500; margin: 0; }
   .local-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 26px; }
@@ -204,7 +206,7 @@
   .insta-note { font-size: 12px; color: var(--ink-4); margin: 14px 0 0; }
 
   /* ── HOST ── */
-  .host { background: var(--bg-sub); display: flex; justify-content: center; text-align: center; }
+  .host { background: var(--bg-sub); display: flex; justify-content: center; text-align: center; padding: clamp(70px, 10vw, 120px) var(--gutter); }
   .host-inner { max-width: 620px; }
   .host-badge { width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 24px; }
   .host-sub { font-size: 13px; line-height: 1.9; color: var(--ink-4); margin: 0 0 22px; }
@@ -224,7 +226,7 @@
   .faq-item p { font-size: 14px; font-weight: 300; color: var(--ink-2); line-height: 1.9; margin: 12px 0 0; }
 
   /* ── CTA ── */
-  .cta { background: var(--bg-dark); display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; }
+  .cta { background: var(--bg-dark); display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; padding: clamp(70px, 10vw, 120px) var(--gutter); }
   .cta-text h2 { color: var(--cream); font-size: clamp(20px,2.8vw,28px); line-height: 1.7; font-weight: 500; margin: 0 0 14px; }
   .cta-text p { color: #B8B2A4; font-size: 14px; line-height: 1.9; font-weight: 300; margin: 0 0 6px; }
   .cta-price { color: var(--ink-4) !important; font-size: 13px; margin: 0 0 14px !important; }
@@ -312,7 +314,10 @@
 
 <!-- HEADER -->
 <header id="header">
-  <a href="#" class="serif-en nav-logo">Oideya</a>
+  <a href="#" class="serif-en nav-logo">
+    <img src="image/logo-icon.png" alt="" width="32" height="32">
+    Oideya
+  </a>
   <nav class="nav-links sans-jp">
     <a href="#concept">コンセプト</a>
     <a href="#rooms">お部屋</a>
@@ -433,8 +438,6 @@
 <!-- AMENITIES -->
 <div class="amenities">
   <div class="amenities-text">
-    <div class="eyebrow sans-jp">設備・こだわり</div>
-    <h2 class="serif-jp reveal">一棟貸しだから、<br>家のように使える。</h2>
     <p class="sans-jp reveal">2階建て一軒家の1階はLDK、2階が寝室。ダブルベッド3台＋布団2組で最大8名まで対応します。冬季は寒さ対策として、こたつや補助暖房、冷気を遮る暖簾・カーテンを導入しています。</p>
   </div>
   <div class="amenities-grid reveal">
@@ -495,19 +498,31 @@
   </div>
   <div class="local-grid reveal">
     <div class="local-item">
-      <h3 class="sans-jp">阪急オアシス</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+        <img src="image/オアシス.jpg" alt="阪急オアシス" style="width:100px;height:100px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+        <h3 class="sans-jp" style="margin:0;">阪急オアシス</h3>
+      </div>
       <p class="sans-jp">徒歩5分・食材や日用品の買い出しに</p>
     </div>
     <div class="local-item">
-      <h3 class="sans-jp">海鮮居酒屋 春夏秋冬</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+        <img src="image/刺身.jpg" alt="海鮮居酒屋 春夏秋冬" style="width:100px;height:100px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+        <h3 class="sans-jp" style="margin:0;">海鮮居酒屋 春夏秋冬</h3>
+      </div>
       <p class="sans-jp">徒歩2分・地元で愛される海鮮居酒屋</p>
     </div>
     <div class="local-item">
-      <h3 class="sans-jp">Yoruca Cafe</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+        <img src="image/オムレツ.jpg" alt="Yoruca Cafe" style="width:100px;height:100px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+        <h3 class="sans-jp" style="margin:0;">Yoruca Cafe</h3>
+      </div>
       <p class="sans-jp">徒歩3分・キッズメニューもある洋食カフェ</p>
     </div>
     <div class="local-item">
-      <h3 class="sans-jp">三津屋商店街</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+        <img src="image/三津屋商店街.jpg" alt="三津屋商店街" style="width:100px;height:100px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+        <h3 class="sans-jp" style="margin:0;">三津屋商店街</h3>
+      </div>
       <p class="sans-jp">徒歩5分圏内・昔ながらの商店街で地域の雰囲気を</p>
     </div>
   </div>
@@ -694,9 +709,12 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div style="display:flex; align-items:baseline; gap:10px;">
-        <span class="serif-en" style="color:var(--ink-4); font-size:17px;">Oideya</span>
-        <span class="serif-jp" style="color:var(--ink-3); font-size:13px;">おいでや</span>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="image/logo-icon.png" alt="Oideya" width="30" height="30" style="width:30px; height:30px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.85;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span class="serif-en" style="color:var(--ink-4); font-size:17px;">Oideya</span>
+          <span class="serif-jp" style="color:var(--ink-3); font-size:13px;">おいでや</span>
+        </div>
       </div>
       <p class="sans-jp">大阪市淀川区・神崎川駅徒歩3分<br>1931年築の古民家を和モダンに改装した一棟貸切宿<br>Booking.com Traveller Review Awards 2026 受賞</p>
     </div>
