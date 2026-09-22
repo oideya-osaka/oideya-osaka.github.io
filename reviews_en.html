@@ -43,6 +43,12 @@
   --light-gray: #d8d4cc;
   --tatami: #b8c890;
   --tatami-light: #e6edcf;
+  --primary: #2B4FBF;
+  --primary-soft: #D8DEF5;
+  --accent: #E8601A;
+  --cream: #FBF9F4;
+  --bg-dark: #1C1B18;
+  --bg-sub: #EDE7DA;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -106,27 +112,18 @@ nav a.active { color: var(--blue); font-weight: 500; }
 
 /* ─── HERO ─── */
 .reviews-hero {
-  background: var(--ink);
-  padding: 80px 48px 72px;
+  background: var(--bg-dark);
+  padding: 140px 20px 64px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
-.reviews-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 65% 40%, rgba(43,79,191,0.22) 0%, transparent 60%),
-    radial-gradient(ellipse at 25% 70%, rgba(184,200,144,0.12) 0%, transparent 50%);
-}
-.reviews-hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
-.reviews-hero .tag { color: var(--tatami); }
+.reviews-hero-inner { max-width: 640px; margin: 0 auto; }
 .reviews-hero h1 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
-  color: white; line-height: 1.2; margin-bottom: 16px;
+  font-size: clamp(30px, 5vw, 48px);
+  color: var(--cream); line-height: 1.5; font-weight: 500; margin: 20px 0 20px;
 }
-.reviews-hero p { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.8; font-weight: 300; }
+.reviews-hero p { font-size: 14px; color: #B8B2A4; line-height: 2; font-weight: 300; max-width: 480px; margin: 0 auto; }
+.eyebrow { color: var(--primary); font-size: 14px; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
 
 /* ─── OVERVIEW BAR ─── */
 .overview-section {
@@ -141,7 +138,7 @@ nav a.active { color: var(--blue); font-weight: 500; }
 .overview-score-block { display: flex; align-items: baseline; gap: 8px; }
 .score-big {
   font-family: 'DM Serif Display', serif;
-  font-size: 3rem; color: var(--blue); line-height: 1;
+  font-size: 40px; font-style: italic; color: var(--primary); line-height: 1;
 }
 .score-suffix { font-size: 1rem; color: var(--gray); font-weight: 300; }
 .score-source { font-size: 0.75rem; color: var(--gray); margin-top: 4px; letter-spacing: 0.04em; }
@@ -149,7 +146,7 @@ nav a.active { color: var(--blue); font-weight: 500; }
 .award-block { display: flex; align-items: center; gap: 14px; }
 .award-icon-wrap {
   width: 48px; height: 48px; border-radius: 50%;
-  background: var(--tatami-light);
+  background: var(--primary-soft);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.4rem; flex-shrink: 0;
 }
@@ -167,16 +164,10 @@ nav a.active { color: var(--blue); font-weight: 500; }
 }
 
 .review-card {
-  background: white;
-  border: 1px solid var(--light-gray);
-  border-radius: 12px;
+  background: var(--bg-sub);
+  border-radius: 2px;
   padding: 32px;
   display: flex; flex-direction: column; gap: 20px;
-  transition: box-shadow 0.25s, transform 0.25s;
-}
-.review-card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  transform: translateY(-3px);
 }
 
 .review-card-header {
@@ -196,7 +187,7 @@ nav a.active { color: var(--blue); font-weight: 500; }
 
 .review-score-block { text-align: right; flex-shrink: 0; }
 .review-score { display: flex; align-items: baseline; gap: 3px; justify-content: flex-end; }
-.score-star { color: var(--yellow); font-size: 1.15rem; line-height: 1; }
+.score-star { color: var(--accent); font-size: 1.15rem; line-height: 1; }
 .score-num {
   font-family: 'DM Serif Display', serif;
   font-size: 2rem; color: var(--ink); line-height: 1;
@@ -207,7 +198,7 @@ nav a.active { color: var(--blue); font-weight: 500; }
   font-family: 'DM Serif Display', serif;
   font-size: 1rem; color: var(--ink);
   font-style: italic; line-height: 1.5;
-  border-left: 3px solid var(--tatami);
+  border-left: 3px solid var(--accent);
   padding-left: 14px;
 }
 
@@ -218,7 +209,7 @@ nav a.active { color: var(--blue); font-weight: 500; }
   text-transform: uppercase; color: var(--gray);
   margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
 }
-.review-label-good::before { content: '○'; color: var(--tatami); font-size: 0.8rem; }
+.review-label-good::before { content: '○'; color: var(--primary); font-size: 0.8rem; }
 .review-label-bad::before { content: '△'; color: var(--orange); font-size: 0.8rem; }
 
 .review-text {
@@ -237,12 +228,10 @@ nav a.active { color: var(--blue); font-weight: 500; }
 }
 .btn-primary {
   display: inline-block;
-  background: var(--blue); color: white;
-  padding: 14px 36px; border-radius: 8px;
+  background: var(--accent); color: var(--cream);
+  padding: 14px 36px; border-radius: 2px;
   text-decoration: none; font-size: 0.88rem; font-weight: 500;
-  transition: background 0.2s, transform 0.15s;
 }
-.btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
 
 /* ─── FOOTER ─── */
 footer {
@@ -332,8 +321,8 @@ footer {
 <!-- PAGE HERO -->
 <section class="reviews-hero">
   <div class="reviews-hero-inner">
-    <div class="tag">GUEST REVIEWS</div>
-    <h1>What Our Guests Say</h1>
+    <div class="eyebrow sans-jp" style="justify-content:center;">GUEST REVIEWS</div>
+    <h1 class="serif-en">What Our Guests Say</h1>
     <p>Guests from around the world have stayed at Oideya.</p>
   </div>
 </section>
