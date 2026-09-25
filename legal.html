@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特定商取引法に基づく表記 | Oideya</title>
+<meta name="description" content="Oideya（おいでや）の特定商取引法に基づく表記です。">
+<link rel="icon" href="image/logo.PNG">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F4EE;
+    --bg-dark: #1C1B18;
+    --bg-darker: #14130F;
+    --primary: #2B4FBF;
+    --primary-soft: #D8DEF5;
+    --accent: #E8601A;
+    --bg-sub: #EDE7DA;
+    --ink: #211F1B;
+    --ink-2: #4A4740;
+    --ink-3: #6B665B;
+    --ink-4: #8C877A;
+    --cream: #FBF9F4;
+    --line: #D8D2C2;
+    --line-soft: #E4DFD2;
+    --gutter: clamp(20px, 5vw, 56px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; }
+  .serif-jp { font-family: 'Shippori Mincho', serif; }
+  .serif-en { font-family: 'DM Serif Display', serif; }
+  .sans-en { font-family: 'Outfit', sans-serif; }
+  .sans-jp { font-family: 'Noto Sans JP', sans-serif; }
+  .eyebrow { color: var(--primary); font-size: 14px; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 18px; }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 300;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px var(--gutter);
+    background: rgba(247,244,238,0.94); backdrop-filter: blur(10px);
+    color: var(--ink); box-shadow: 0 1px 0 var(--line-soft);
+  }
+  .nav-logo { font-size: 21px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+  .nav-logo img { width: 32px; height: 32px; object-fit: contain; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 26px; font-size: 14px; font-weight: 300; letter-spacing: 0.03em; }
+  .nav-cta {
+    padding: 9px 20px; border-radius: 2px; background: var(--accent); color: var(--cream) !important;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.03em; white-space: nowrap;
+  }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: inherit; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: currentColor; margin: 5px 0; }
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 290; background: var(--bg-dark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+    transform: translateY(-100%); transition: transform 0.35s ease; visibility: hidden;
+  }
+  .mobile-menu.open { transform: translateY(0); visibility: visible; }
+  .mobile-menu a { color: var(--cream); font-size: 18px; }
+  .mobile-menu a.nav-cta { color: var(--cream) !important; }
+
+  /* ── PAGE HERO ── */
+  .page-hero { background: var(--bg-dark); padding: 140px 20px 64px; text-align: center; }
+  .page-hero h1 { color: var(--cream); font-size: clamp(28px, 4.5vw, 42px); line-height: 1.5; font-weight: 500; margin: 0; }
+
+  /* ── LEGAL CONTENT ── */
+  .legal-wrap { max-width: 760px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) var(--gutter) 120px; }
+  .legal-table { width: 100%; border-collapse: collapse; }
+  .legal-table tr { border-bottom: 1px solid var(--line-soft); }
+  .legal-table tr:first-child { border-top: 1px solid var(--line-soft); }
+  .legal-table th {
+    text-align: left; vertical-align: top; font-weight: 500; color: var(--ink);
+    font-size: 14px; padding: 22px 20px 22px 0; width: 34%; white-space: nowrap;
+  }
+  .legal-table td {
+    text-align: left; vertical-align: top; color: var(--ink-2); font-size: 14px;
+    line-height: 1.9; font-weight: 300; padding: 22px 0;
+  }
+  .legal-note { font-size: 13px; color: var(--ink-4); line-height: 1.9; margin-top: 32px; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg-darker); padding: 56px var(--gutter) 30px; }
+  .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+  .footer-brand p { color: var(--ink-3); font-size: 13.5px; line-height: 1.9; margin: 10px 0 0; max-width: 260px; }
+  .footer-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .footer-col h5 { color: var(--ink-4); font-size: 12px; font-weight: 500; letter-spacing: 0.05em; margin: 0 0 14px; }
+  .footer-col a { display: block; color: #B8B2A4; font-size: 13px; margin-bottom: 10px; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-top: 26px; border-top: 1px solid #29271F; }
+  .footer-bottom-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-bottom p { color: var(--ink-3); font-size: 12px; margin: 0; }
+  .footer-bottom-left a { color: #B8B2A4; font-size: 12px; }
+  .footer-langs { display: flex; gap: 18px; font-size: 12px; color: #B8B2A4; }
+  .footer-langs a.active { color: var(--cream); font-weight: 500; }
+
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+  }
+  @media (max-width: 560px) {
+    .legal-table, .legal-table tbody, .legal-table tr, .legal-table th, .legal-table td { display: block; width: 100%; }
+    .legal-table th { padding: 22px 0 6px; }
+    .legal-table td { padding: 0 0 22px; }
+    .legal-table tr:first-child th { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="index.html" class="serif-en nav-logo">
+    <img src="image/logo-icon.png" alt="">
+    Oideya
+  </a>
+  <nav class="nav-links sans-jp">
+    <a href="index.html#concept">コンセプト</a>
+    <a href="index.html#rooms">お部屋</a>
+    <a href="index.html#guide">ご利用案内</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="blog/index.html">ブログ</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="https://www.instagram.com/oideya_osaka" target="_blank" rel="noopener">Instagram</a>
+    <a href="index.html#cta" class="nav-cta sans-jp">ご予約</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu sans-jp" id="mobileMenu">
+  <a href="index.html#concept" data-close>コンセプト</a>
+  <a href="index.html#rooms" data-close>お部屋</a>
+  <a href="index.html#guide" data-close>ご利用案内</a>
+  <a href="index.html#access" data-close>アクセス</a>
+  <a href="blog/index.html">ブログ</a>
+  <a href="index.html#faq" data-close>FAQ</a>
+  <a href="https://www.instagram.com/oideya_osaka" target="_blank" rel="noopener">Instagram</a>
+  <a href="index.html#cta" class="nav-cta" data-close>ご予約</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="eyebrow sans-jp" style="justify-content:center; display:flex;">LEGAL NOTICE</div>
+  <h1 class="serif-jp">特定商取引法に基づく表記</h1>
+</div>
+
+<!-- LEGAL CONTENT -->
+<div class="legal-wrap">
+  <table class="legal-table sans-jp">
+    <tbody>
+      <tr>
+        <th>事業者名</th>
+        <td>元 義貴</td>
+      </tr>
+      <tr>
+        <th>運営責任者</th>
+        <td>元 義貴</td>
+      </tr>
+      <tr>
+        <th>所在地</th>
+        <td>大阪府大阪市淀川区三津屋北1丁目9番15号</td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td>お問い合わせはメールにて承っております。電話番号は、ご請求をいただければ遅滞なく開示いたします。</td>
+      </tr>
+      <tr>
+        <th>連絡先</th>
+        <td><a href="mailto:oideya.osaka@gmail.com" style="border-bottom:1px solid var(--line); color:var(--primary);">oideya.osaka@gmail.com</a></td>
+      </tr>
+      <tr>
+        <th>販売価格</th>
+        <td>宿泊料金は、各予約ページに表示される金額によります。</td>
+      </tr>
+      <tr>
+        <th>商品代金以外の必要料金</th>
+        <td>特になし。</td>
+      </tr>
+      <tr>
+        <th>お支払い方法</th>
+        <td>クレジットカード決済（Stripe）</td>
+      </tr>
+      <tr>
+        <th>お支払い時期</th>
+        <td>チェックイン7日前に、登録いただいたクレジットカードにて自動決済いたします。</td>
+      </tr>
+      <tr>
+        <th>サービスの提供時期</th>
+        <td>チェックイン日より、ご予約いただいた宿泊期間中。</td>
+      </tr>
+      <tr>
+        <th>キャンセル・返金について</th>
+        <td>チェックイン7日前までのキャンセルは無料です。それ以降のキャンセルは、1泊分の料金をキャンセル料として申し受けます。</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="legal-note sans-jp">本ページの記載内容は、法令改正やサービス内容の変更に伴い、予告なく更新される場合があります。</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="image/logo-icon.png" alt="Oideya" width="30" height="30" style="width:30px; height:30px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.85;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span class="serif-en" style="color:var(--ink-4); font-size:17px;">Oideya</span>
+          <span class="serif-jp" style="color:var(--ink-3); font-size:13px;">おいでや</span>
+        </div>
+      </div>
+      <p class="sans-jp">大阪市淀川区・神崎川駅徒歩3分<br>1931年築の古民家を和モダンに改装した一棟貸切宿<br>Booking.com Traveller Review Awards 2026 受賞</p>
+    </div>
+    <div class="footer-cols sans-jp">
+      <div class="footer-col">
+        <h5>施設</h5>
+        <a href="index.html#concept">Oideyaについて</a>
+        <a href="index.html#rooms">お部屋のご案内</a>
+        <a href="index.html#guide">ご利用案内</a>
+        <a href="index.html#access">アクセス</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>コンテンツ</h5>
+        <a href="blog/index.html">ブログ</a>
+        <a href="reviews.html">ゲストの声</a>
+        <a href="https://www.instagram.com/oideya_osaka/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://x.com/Oideya_0saka" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <p class="sans-jp">Copyright (C) Oideya All Rights Reserved.</p>
+      <a href="legal.html" class="sans-jp">特定商取引法に基づく表記</a>
+    </div>
+    <div class="footer-langs sans-jp">
+      <a href="index.html" class="active">日本語</a>
+      <a href="index-en.html">English</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
+</body>
+</html>
