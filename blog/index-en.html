@@ -4,590 +4,514 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog | Oideya</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Local food, sightseeing spots, and practical guides for Osaka and the Kanzakigawa area, from Oideya.">
+<link rel="alternate" hreflang="ja" href="index.html">
+<link rel="alternate" hreflang="en" href="index-en.html">
+<link rel="icon" href="../image/logo.PNG">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --white: #fafaf8;
-  --off-white: #f2f0eb;
-  --paper: #ede9e0;
-  --wood-light: #c4956a;
-  --blue: #2B4FBF;
-  --blue-dark: #1a3491;
-  --orange: #E8601A;
-  --ink: #1c1a17;
-  --gray: #6b6560;
-  --light-gray: #d8d4cc;
-  --tatami: #b8c890;
-  --tatami-light: #e6edcf;
-}
+  :root {
+    --bg: #F7F4EE;
+    --bg-dark: #1C1B18;
+    --bg-darker: #14130F;
+    --primary: #2B4FBF;
+    --primary-soft: #D8DEF5;
+    --accent: #E8601A;
+    --bg-sub: #EDE7DA;
+    --ink: #211F1B;
+    --ink-2: #4A4740;
+    --ink-3: #6B665B;
+    --ink-4: #8C877A;
+    --cream: #FBF9F4;
+    --line: #D8D2C2;
+    --line-soft: #E4DFD2;
+    --gutter: clamp(20px, 5vw, 56px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; }
+  .serif-jp { font-family: 'Shippori Mincho', serif; }
+  .serif-en { font-family: 'DM Serif Display', serif; }
+  .sans-en { font-family: 'Outfit', sans-serif; }
+  .sans-jp { font-family: 'Noto Sans JP', sans-serif; }
+  .eyebrow { color: var(--primary); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 18px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Outfit', 'Noto Sans JP', sans-serif;
-  background: var(--white);
-  color: var(--ink);
-}
+  /* ── HEADER (shared with top page) ── */
+  header {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 300;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px var(--gutter);
+    background: rgba(247,244,238,0.94); backdrop-filter: blur(10px);
+    color: var(--ink); box-shadow: 0 1px 0 var(--line-soft);
+  }
+  .nav-logo { font-size: 21px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+  .nav-logo img { width: 32px; height: 32px; object-fit: contain; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 26px; font-size: 13px; font-weight: 300; letter-spacing: 0.03em; }
+  .nav-links a.current { color: var(--primary); font-weight: 500; }
+  .nav-cta {
+    padding: 9px 20px; border-radius: 2px; background: var(--accent); color: var(--cream) !important;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.03em; white-space: nowrap;
+  }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: inherit; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: currentColor; margin: 5px 0; }
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 290; background: var(--bg-dark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+    transform: translateY(-100%); transition: transform 0.35s ease; visibility: hidden;
+  }
+  .mobile-menu.open { transform: translateY(0); visibility: visible; }
+  .mobile-menu a { color: var(--cream); font-size: 18px; }
+  .mobile-menu a.nav-cta { color: var(--cream) !important; }
 
-/* ─── HEADER ─── */
-header {
-  position: sticky; top: 0; z-index: 100;
-  height: 64px; padding: 0 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(250,250,248,0.96);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--light-gray);
-}
-.logo {
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none; color: var(--ink);
-}
-.logo-icon {
-  width: 36px; height: 36px;
-}
-.logo-text { font-family: 'DM Serif Display', serif; font-size: 1.35rem; }
-.logo-sub { font-size: 0.62rem; color: var(--gray); letter-spacing: 0.15em; display: block; margin-top: -2px; }
+  /* ── BLOG HERO ── */
+  .blog-hero {
+    background: var(--bg-dark); padding: 160px var(--gutter) 80px; text-align: center;
+  }
+  .blog-hero .eyebrow { justify-content: center; display: flex; }
+  .blog-hero h1 { color: var(--cream); font-size: clamp(30px, 5vw, 48px); line-height: 1.5; font-weight: 500; margin: 0 0 20px; }
+  .blog-hero p { color: #B8B2A4; font-size: 14px; line-height: 2; font-weight: 300; max-width: 480px; margin: 0 auto; }
 
-nav { display: flex; align-items: center; gap: 28px; }
-nav a { font-size: 0.82rem; color: var(--gray); text-decoration: none; transition: color 0.2s; }
-nav a:hover { color: var(--blue); }
-nav a.active { color: var(--blue); font-weight: 500; }
-.btn-book {
-  background: var(--blue); color: white !important;
-  padding: 9px 22px; border-radius: 6px;
-  font-size: 0.8rem !important; font-weight: 500 !important;
-  transition: background 0.2s !important;
-}
-.btn-book:hover { background: var(--blue-dark) !important; }
+  /* ── FILTER ── */
+  .filter-bar {
+    background: var(--bg); border-bottom: 1px solid var(--line-soft);
+    padding: 0 var(--gutter); display: flex; gap: 4px; overflow-x: auto;
+  }
+  .filter-btn {
+    padding: 18px 18px; font-size: 13px; font-weight: 400; letter-spacing: 0.03em;
+    color: var(--ink-3); background: none; border: none; cursor: pointer;
+    border-bottom: 2px solid transparent; white-space: nowrap; font-family: 'Outfit', sans-serif;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .filter-btn:hover { color: var(--ink); }
+  .filter-btn.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 500; }
 
-/* ─── HERO ─── */
-.blog-hero {
-  background: var(--ink);
-  padding: 80px 48px 72px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.blog-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 60% 40%, rgba(43,79,191,0.2) 0%, transparent 60%),
-              radial-gradient(ellipse at 30% 70%, rgba(232,96,26,0.1) 0%, transparent 50%);
-}
-.blog-hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
-.blog-hero .tag {
-  display: inline-block; font-size: 0.65rem; letter-spacing: 0.35em;
-  text-transform: uppercase; color: var(--tatami); font-weight: 600; margin-bottom: 16px;
-}
-.blog-hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  color: white; line-height: 1.2; margin-bottom: 16px;
-}
-.blog-hero p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.8; font-weight: 300; }
+  /* ── FEATURED ── */
+  .featured { padding: 64px var(--gutter) 24px; }
+  .featured-label { color: var(--accent); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 20px; display: block; }
+  .featured-card {
+    display: grid; grid-template-columns: 1.2fr 1fr; background: var(--cream);
+    border: 1px solid var(--line-soft); border-radius: 2px; overflow: hidden;
+  }
+  .featured-img { height: 380px; overflow: hidden; position: relative; background: var(--bg-sub); }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .featured-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; }
+  .post-tag { color: var(--primary); font-size: 12px; font-weight: 500; letter-spacing: 0.05em; margin-bottom: 14px; display: block; }
+  .featured-title { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.5; color: var(--ink); font-weight: 500; margin: 0 0 16px; }
+  .featured-excerpt { font-size: 14px; line-height: 1.9; color: var(--ink-2); font-weight: 300; margin: 0 0 24px; }
+  .post-meta { font-size: 12px; color: var(--ink-4); }
+  .read-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--primary); font-weight: 500; margin-top: 18px; width: fit-content; }
+  .read-more::after { content: '→'; }
 
-/* ─── FILTER ─── */
-.filter-bar {
-  background: var(--off-white);
-  border-bottom: 1px solid var(--light-gray);
-  padding: 0 48px;
-  display: flex; gap: 4px; align-items: center;
-  overflow-x: auto;
-}
-.filter-btn {
-  padding: 16px 20px;
-  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em;
-  color: var(--gray); background: none; border: none; cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-  white-space: nowrap; font-family: 'Outfit', 'Noto Sans JP', sans-serif;
-}
-.filter-btn:hover { color: var(--ink); }
-.filter-btn.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 500; }
+  /* ── POST GRID ── */
+  .posts-section { padding: 24px var(--gutter) 120px; }
+  .posts-section-title { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--ink); margin: 0 0 32px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+  .posts-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
+  .post-card { background: var(--cream); border: 1px solid var(--line-soft); border-radius: 2px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s; }
+  .post-card:hover { border-color: var(--primary); }
+  .post-card-img { height: 190px; overflow: hidden; position: relative; background: var(--bg-sub); }
+  .post-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-card-img-placeholder {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif; font-size: 14px; letter-spacing: 0.05em; color: rgba(251,249,244,0.75);
+  }
+  .ph-a { background: linear-gradient(135deg, #1C1B18 0%, #2B4FBF 150%); }
+  .ph-b { background: linear-gradient(135deg, #1C1B18 0%, #E8601A 150%); }
+  .post-card-body { padding: 20px 20px 24px; flex: 1; display: flex; flex-direction: column; }
+  .post-card-title { font-size: 14px; line-height: 1.6; color: var(--ink); font-weight: 500; margin-bottom: 14px; flex: 1; }
+  .post-card-meta { font-size: 11.5px; color: var(--ink-4); }
 
-/* ─── MAIN CONTENT ─── */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  /* ── FOOTER (shared with top page) ── */
+  footer { background: var(--bg-darker); padding: 56px var(--gutter) 30px; }
+  .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+  .footer-brand p { color: var(--ink-3); font-size: 12.5px; line-height: 1.9; margin: 10px 0 0; max-width: 260px; }
+  .footer-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .footer-col h5 { color: var(--ink-4); font-size: 12px; font-weight: 500; letter-spacing: 0.05em; margin: 0 0 14px; }
+  .footer-col a { display: block; color: #B8B2A4; font-size: 13px; margin-bottom: 10px; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-top: 26px; border-top: 1px solid #29271F; }
+  .footer-bottom-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-bottom p { color: var(--ink-3); font-size: 12px; margin: 0; }
+  .footer-bottom-left a { color: #B8B2A4; font-size: 12px; }
+  .footer-langs { display: flex; gap: 18px; font-size: 12px; color: #B8B2A4; }
+  .footer-langs a.active { color: var(--cream); font-weight: 500; }
 
-/* Featured post */
-.featured {
-  padding: 72px 0 48px;
-}
-.featured-label {
-  font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--orange); font-weight: 600; margin-bottom: 24px; display: block;
-}
-.featured-card {
-  display: grid; grid-template-columns: 1.2fr 1fr;
-  gap: 0; background: white;
-  border-radius: 4px; overflow: hidden;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
-  cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
-  text-decoration: none; color: inherit;
-}
-.featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-.featured-img {
-  height: 380px; overflow: hidden; position: relative;
-  background: var(--paper);
-}
-.featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-.featured-card:hover .featured-img img { transform: scale(1.04); }
-
-.featured-img-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Serif Display', serif; font-size: 1rem;
-  letter-spacing: 0.2em; color: rgba(0,0,0,0.15);
-}
-
-.featured-body {
-  padding: 48px 44px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.post-tag {
-  font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--orange); font-weight: 600; margin-bottom: 14px; display: block;
-}
-.featured-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  line-height: 1.35; color: var(--ink); margin-bottom: 16px;
-}
-.featured-excerpt {
-  font-size: 0.88rem; line-height: 1.9; color: var(--gray);
-  font-weight: 300; margin-bottom: 28px;
-}
-.post-meta { font-size: 0.72rem; color: var(--gray); display: flex; gap: 16px; align-items: center; }
-.post-date::before { content: '📅 '; }
-.read-more {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.82rem; color: var(--blue); font-weight: 500;
-  text-decoration: none; margin-top: 20px; width: fit-content;
-  transition: gap 0.2s;
-}
-.read-more:hover { gap: 10px; }
-.read-more::after { content: '→'; }
-
-/* Post grid */
-.posts-section { padding-bottom: 100px; }
-.posts-section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem; color: var(--ink);
-  margin-bottom: 32px; padding-top: 16px;
-  border-top: 1px solid var(--light-gray);
-}
-
-.posts-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.post-card {
-  background: white; border-radius: 4px; overflow: hidden;
-  cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
-  text-decoration: none; color: inherit;
-  display: flex; flex-direction: column;
-}
-.post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
-
-.post-card-img {
-  height: 200px; overflow: hidden; position: relative;
-  background: var(--paper);
-}
-.post-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-.post-card:hover .post-card-img img { transform: scale(1.05); }
-
-.post-card-img-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; letter-spacing: 0.15em; color: rgba(0,0,0,0.15);
-}
-
-.post-card-body {
-  padding: 22px 22px 26px;
-  flex: 1; display: flex; flex-direction: column;
-}
-.post-card-title {
-  font-size: 0.92rem; line-height: 1.65; color: var(--ink);
-  font-weight: 500; margin-bottom: 12px; flex: 1;
-}
-.post-card-meta { font-size: 0.7rem; color: var(--gray); }
-
-/* category colors */
-.tag-gourmet { color: #c0392b; }
-.tag-info { color: var(--blue); }
-.tag-spot { color: #27ae60; }
-.tag-living { color: #8e44ad; }
-
-/* ─── FOOTER ─── */
-footer {
-  background: #131110; padding: 48px;
-  text-align: center;
-}
-.footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: white; display: block; margin-bottom: 16px; }
-.footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
-.footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: white; }
-.footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.2); }
-
-/* ─── REVEAL ─── */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  header { padding: 0 24px; }
-  nav { display: none; }
-  .blog-hero { padding: 60px 24px; }
-  .filter-bar { padding: 0 24px; }
-  .container { padding: 0 24px; }
-  .featured-card { grid-template-columns: 1fr; }
-  .featured-img { height: 240px; }
-  .featured-body { padding: 32px 28px; }
-  .posts-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .posts-grid { grid-template-columns: 1fr; }
-}
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-img { height: 240px; }
+    .featured-body { padding: 32px 28px; }
+    .posts-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .posts-grid { grid-template-columns: 1fr; }
+    .blog-hero { padding: 140px 20px 64px; }
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <a href="../index.html" class="logo">
-    <div class="logo-icon"><img src="../image/logo.PNG" alt="Oideya" style="width:36px;height:36px;object-fit:contain;"></div>
-    <div>
-      <span class="logo-text">Oideya</span>
-      <span class="logo-sub">GUEST HOUSE · OSAKA</span>
-    </div>
+<!-- HEADER -->
+<header id="header">
+  <a href="../index-en.html" class="serif-en nav-logo">
+    <img src="../image/logo-icon.png" alt="">
+    Oideya
   </a>
-  <nav>
-    <a href="../index.html#about">About</a>
-    <a href="../index.html#rooms">Rooms</a>
-    <a href="../index.html#plan">Rates</a>
-    <a href="index.html" class="active">ブログ</a>
-    <a href="../index.html#access">Access</a>
-    <a href="../index.html#contact" class="btn-book">Book Now</a>
+  <nav class="nav-links sans-en">
+    <a href="../index-en.html#concept">Concept</a>
+    <a href="../index-en.html#rooms">Rooms</a>
+    <a href="../index-en.html#guide">Guide</a>
+    <a href="../index-en.html#access">Access</a>
+    <a href="index-en.html" class="current">Blog</a>
+    <a href="../index-en.html#faq">FAQ</a>
+    <a href="https://www.instagram.com/oideya_osaka" target="_blank" rel="noopener">Instagram</a>
+    <a href="index.html" style="opacity:0.75;">JA</a>
+    <a href="../index-en.html#cta" class="nav-cta">Book Now</a>
   </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu sans-en" id="mobileMenu">
+  <a href="../index-en.html#concept" data-close>Concept</a>
+  <a href="../index-en.html#rooms" data-close>Rooms</a>
+  <a href="../index-en.html#guide" data-close>Guide</a>
+  <a href="../index-en.html#access" data-close>Access</a>
+  <a href="index-en.html">Blog</a>
+  <a href="../index-en.html#faq" data-close>FAQ</a>
+  <a href="https://www.instagram.com/oideya_osaka" target="_blank" rel="noopener">Instagram</a>
+  <a href="index.html">JA</a>
+  <a href="../index-en.html#cta" class="nav-cta" data-close>Book Now</a>
+</div>
 
 <!-- HERO -->
 <div class="blog-hero">
-  <div class="blog-hero-inner">
-    <span class="tag">Blog &amp; Info</span>
-    <h1>Blog &amp;<br>Updates</h1>
-    <p>Local food, sightseeing, and insider tips<br>from the Kanzakigawa neighborhood in Osaka.</p>
-  </div>
+  <div class="eyebrow sans-en">Blog &amp; Info</div>
+  <h1 class="serif-en">News &amp; Blog</h1>
+  <p class="sans-en">Local food, sightseeing spots, and practical tips — real information about Osaka and the Kanzakigawa area.</p>
 </div>
 
 <!-- FILTER -->
-<div class="filter-bar">
+<div class="filter-bar sans-en">
   <button class="filter-btn active" onclick="filterPosts('all', this)">All</button>
-  <button class="filter-btn" onclick="filterPosts('gourmet', this)">Local Food</button>
+  <button class="filter-btn" onclick="filterPosts('gourmet', this)">Food Nearby</button>
   <button class="filter-btn" onclick="filterPosts('spot', this)">Sightseeing</button>
-  <button class="filter-btn" onclick="filterPosts('info', this)">About Oideya</button>
-  <button class="filter-btn" onclick="filterPosts('living', this)">Osaka Life</button>
+  <button class="filter-btn" onclick="filterPosts('info', this)">Property Info</button>
+  <button class="filter-btn" onclick="filterPosts('living', this)">Osaka Living</button>
 </div>
 
 <!-- FEATURED -->
-<div class="container">
-  <div class="featured reveal">
-    <span class="featured-label">✦ Featured</span>
-    <a href="posts/post-02-en.html" class="featured-card" data-category="spot">
-      <div class="featured-img">
-        <img src="../image/osaka_photo1.png" alt="Best areas to stay in Osaka for families">
-      </div>
-      <div class="featured-body">
-        <span class="post-tag tag-spot">Osaka Travel</span>
-        <h2 class="featured-title">Best Areas to Stay in Osaka for Families — Top 5 Picks [2026]</h2>
-        <p class="featured-excerpt">Choosing the right neighborhood makes or breaks a family trip to Osaka. We compare Umeda, Namba, Yodogawa, and more — covering access, price, and family-friendliness. Plus: why a private whole-house rental might be the smartest choice.</p>
-        <div class="post-meta">
-          <span class="post-date">2026.03.14</span>
-        </div>
-        <span class="read-more">Read More</span>
+<div class="featured reveal">
+  <span class="featured-label sans-en">✦ Featured</span>
+  <a href="posts/post-02-en.html" class="featured-card" data-category="spot">
+    <div class="featured-img">
+      <img src="../image/osaka_photo1.png" alt="Best neighborhoods to stay in Osaka for family travel">
+    </div>
+    <div class="featured-body">
+      <span class="post-tag sans-en">Osaka Travel</span>
+      <h2 class="featured-title">Best Neighborhoods to Stay in Osaka for Family Travel [2026 Guide]</h2>
+      <p class="featured-excerpt sans-en">A thorough comparison of Osaka's most popular areas to stay — Umeda, Namba, Yodogawa and more — including a close look at Oideya, a whole-house kominka rental ideal for families and groups. The right area makes all the difference.</p>
+      <div class="post-meta sans-en">2026.03.14</div>
+      <span class="read-more sans-en">Read more</span>
+    </div>
+  </a>
+</div>
+
+<!-- POST GRID -->
+<div class="posts-section">
+  <div class="posts-section-title">All Posts</div>
+  <div class="posts-grid" id="posts-grid">
+
+    <a href="posts/post-01-en.html" class="post-card reveal" data-category="gourmet">
+      <div class="post-card-img ph-b"><div class="post-card-img-placeholder">Shunkashuto</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Food Nearby</span>
+        <div class="post-card-title sans-en">2-min Walk! The Freshest Seafood Izakaya Near Oideya</div>
+        <div class="post-card-meta sans-en">2026.01.20</div>
       </div>
     </a>
-  </div>
 
-  <!-- POST GRID -->
-  <div class="posts-section">
-    <div class="posts-section-title">All Posts</div>
-    <div class="posts-grid" id="posts-grid">
+    <a href="posts/post-02-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img"><img src="../image/osaka_photo1.png" alt="Best neighborhoods to stay in Osaka for family travel"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">Best Neighborhoods to Stay in Osaka for Family Travel [2026 Guide]</div>
+        <div class="post-card-meta sans-en">2026.03.14</div>
+      </div>
+    </a>
 
-      <a href="posts/post-01-en.html" class="post-card reveal" data-category="gourmet">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder">📸 写真</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-gourmet">Local Food</span>
-          <div class="post-card-title">Just a 2-Minute Walk — The Hidden Seafood Izakaya Locals Love</div>
-          <div class="post-card-meta">2026.01.20</div>
-        </div>
-      </a>
+    <a href="posts/post-19-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img ph-a"><div class="post-card-img-placeholder">Shotengai Walk</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Sightseeing</span>
+        <div class="post-card-title sans-en">Walking Osaka's Retro Shotengai from Kanzakigawa Station</div>
+        <div class="post-card-meta sans-en">2026.05.28</div>
+      </div>
+    </a>
 
-      <a href="posts/post-02-en.html" class="post-card reveal reveal-delay-1" data-category="spot">
-        <div class="post-card-img">
-          <img src="../image/osaka_photo1.png" alt="Best areas to stay in Osaka for families">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Osaka Travel</span>
-          <div class="post-card-title">Best Areas to Stay in Osaka for Families — Top 5 Picks [2026]</div>
-          <div class="post-card-meta">2026.03.14</div>
-        </div>
-      </a>
+    <a href="posts/post-03_en.html" class="post-card reveal" data-category="info">
+      <div class="post-card-img"><img src="../image/古民家1.png" alt="Staying in a traditional Japanese house in Osaka"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Property Info</span>
+        <div class="post-card-title sans-en">Staying in a Traditional Japanese House in Osaka: A Complete Guide [2026]</div>
+        <div class="post-card-meta sans-en">2026.03.16</div>
+      </div>
+    </a>
 
-      <a href="posts/post-03-en.html" class="post-card reveal reveal-delay-2" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder">📸 写真</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Sightseeing</span>
-          <div class="post-card-title">Yoruca Cafe &amp; Time Out Market Osaka — Our Neighborhood Favorites</div>
-          <div class="post-card-meta">2025.11.05</div>
-        </div>
-      </a>
+    <a href="posts/post-04_en.html" class="post-card reveal" data-category="gourmet">
+      <div class="post-card-img"><img src="../image/三津屋商店街.jpg" alt="Best restaurants near Kanzakigawa Station"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Food Nearby</span>
+        <div class="post-card-title sans-en">Best Restaurants Near Kanzakigawa Station, Osaka [2026 Local Guide]</div>
+        <div class="post-card-meta sans-en">2026.03.16</div>
+      </div>
+    </a>
 
-      <a href="posts/post-03_en.html" class="post-card reveal" data-category="info">
-        <div class="post-card-img">
-          <img src="../image/古民家1.png" alt="Traditional Japanese house stay in Osaka">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-info">Machiya Stay</span>
-          <div class="post-card-title">Staying in a Traditional Japanese House in Osaka: A Complete Guide [2026]</div>
-          <div class="post-card-meta">2026.03.16</div>
-        </div>
-      </a>
+    <a href="posts/post-05_en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img"><img src="../image/大阪観光客が知らないローカルエリア.png" alt="Walking Juso, Kanzakigawa and Yodogawa"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Local Guide</span>
+        <div class="post-card-title sans-en">Osaka's Hidden Local Districts: Juso, Kanzakigawa & Yodogawa</div>
+        <div class="post-card-meta sans-en">2026.03.30</div>
+      </div>
+    </a>
 
-      <a href="posts/post-04_en.html" class="post-card reveal reveal-delay-1" data-category="gourmet">
-        <div class="post-card-img">
-          <img src="../image/三津屋商店街.jpg" alt="Restaurants near Kanzakigawa station, Osaka">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-gourmet">Local Food</span>
-          <div class="post-card-title">Best Restaurants Near Kanzakigawa Station, Osaka [2026 Local Guide]</div>
-          <div class="post-card-meta">2026.03.16</div>
-        </div>
-      </a>
+    <a href="posts/post-06_en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img"><img src="../image/大阪旅行.png" alt="3-day Osaka itinerary based at Oideya"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">3-Day Osaka Itinerary Based at Oideya [2026]</div>
+        <div class="post-card-meta sans-en">2026.04.01</div>
+      </div>
+    </a>
 
-      <a href="posts/post-05_en.html" class="post-card reveal reveal-delay-2" data-category="spot">
-        <div class="post-card-img">
-          <img src="../image/大阪観光客が知らないローカルエリア.png" alt="Osaka's Hidden Local Districts">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Osaka Local Guide</span>
-          <div class="post-card-title">Osaka's Hidden Local Districts: Juso, Kanzakigawa &amp; Yodogawa</div>
-          <div class="post-card-meta">2026.03.30</div>
-        </div>
-      </a>
+    <a href="posts/post-07-en.html" class="post-card reveal" data-category="living">
+      <div class="post-card-img"><img src="../image/大阪でローカル体験をする方法.png" alt="How to experience local Osaka"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Living</span>
+        <div class="post-card-title sans-en">How to Experience Local Osaka: A Complete Guide [2026]</div>
+        <div class="post-card-meta sans-en">2026.04.10</div>
+      </div>
+    </a>
 
-      <a href="posts/post-06_en.html" class="post-card reveal" data-category="spot">
-        <div class="post-card-img">
-          <img src="../image/大阪旅行.png" alt="3-Day Osaka Itinerary">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Osaka Travel</span>
-          <div class="post-card-title">3-Day Osaka Itinerary Based at Oideya [2026]</div>
-          <div class="post-card-meta">2026.04.01</div>
-        </div>
-      </a>
+    <a href="posts/post-08-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img"><img src="../image/初めての大阪旅行のコツ.png" alt="First time in Osaka tips"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">First Time in Osaka: Tips &amp; Complete Guide [2026]</div>
+        <div class="post-card-meta sans-en">2026.04.13</div>
+      </div>
+    </a>
 
-      <a href="posts/post-07-en.html" class="post-card reveal reveal-delay-1" data-category="living">
-        <div class="post-card-img">
-          <img src="../image/大阪でローカル体験をする方法.png" alt="How to Experience Local Osaka">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-living">Osaka Life</span>
-          <div class="post-card-title">How to Experience Local Osaka: A Complete Guide [2026]</div>
-          <div class="post-card-meta">2026.04.10</div>
-        </div>
-      </a>
+    <a href="posts/post-09_en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img"><img src="../image/大阪から日帰り旅行おすすめ5選.png" alt="Best day trips from Osaka"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">Best Day Trips from Osaka [2026]: Kyoto, Kobe, Nara, Himeji &amp; Arima Onsen</div>
+        <div class="post-card-meta sans-en">2026.04.17</div>
+      </div>
+    </a>
 
-      <a href="posts/post-08-en.html" class="post-card reveal" data-category="spot">
-        <div class="post-card-img">
-          <img src="../image/初めての大阪旅行のコツ.png" alt="First Time in Osaka Tips">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Osaka Travel</span>
-          <div class="post-card-title">First Time in Osaka: Tips &amp; Complete Guide [2026]</div>
-          <div class="post-card-meta">2026.04.13</div>
-        </div>
-      </a>
+    <a href="posts/post-10_en.html" class="post-card reveal" data-category="info">
+      <div class="post-card-img"><img src="../image/古民家1.png" alt="Kominka and traditional house stays"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Property Info</span>
+        <div class="post-card-title sans-en">Why Stay in a Traditional Japanese House Instead of a Hotel [2026 Guide]</div>
+        <div class="post-card-meta sans-en">2026.04.22</div>
+      </div>
+    </a>
 
-      <a href="posts/post-09_en.html" class="post-card reveal reveal-delay-1" data-category="spot">
-        <div class="post-card-img">
-          <img src="../image/大阪から日帰り旅行おすすめ5選.png" alt="Best Day Trips from Osaka">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Osaka Travel</span>
-          <div class="post-card-title">Best Day Trips from Osaka [2026]: Kyoto, Kobe, Nara, Himeji &amp; Arima Onsen</div>
-          <div class="post-card-meta">2026.04.17</div>
-        </div>
-      </a>
+    <a href="posts/post-11-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img ph-a"><div class="post-card-img-placeholder">GW 2026</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">Osaka Golden Week 2026 Guide — How to Enjoy GW Without the Crowds</div>
+        <div class="post-card-meta sans-en">2026.04.29</div>
+      </div>
+    </a>
 
-      <a href="posts/post-10_en.html" class="post-card reveal reveal-delay-2" data-category="info">
-        <div class="post-card-img">
-          <img src="../image/古民家1.png" alt="Traditional Japanese House Stay">
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-info">Machiya Stay</span>
-          <div class="post-card-title">Why Stay in a Traditional Japanese House Instead of a Hotel [2026]</div>
-          <div class="post-card-meta">2026.04.22</div>
-        </div>
-      </a>
+    <a href="posts/post-12-en.html" class="post-card reveal" data-category="info">
+      <div class="post-card-img ph-b"><div class="post-card-img-placeholder">Family Stay</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Property Info</span>
+        <div class="post-card-title sans-en">Why a Whole-House Rental is Better than a Hotel for Osaka Family Travel [2026]</div>
+        <div class="post-card-meta sans-en">2026.05.03</div>
+      </div>
+    </a>
 
-      <a href="posts/post-11-en.html" class="post-card reveal reveal-delay-2" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#3d1a35,#c07890);color:rgba(255,255,255,0.5);">GW 2026</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Osaka Travel</span>
-          <div class="post-card-title">Osaka Golden Week 2026 Guide — How to Enjoy GW Without the Crowds</div>
-          <div class="post-card-meta">2026.04.29</div>
-        </div>
-      </a>
+    <a href="posts/post-13-en.html" class="post-card reveal" data-category="info">
+      <div class="post-card-img ph-a"><div class="post-card-img-placeholder">Transit Guide</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">Osaka Transport Guide [2026]: IC Cards, Trains &amp; Buses Explained</div>
+        <div class="post-card-meta sans-en">2026.05.10</div>
+      </div>
+    </a>
 
-      <a href="posts/post-12-en.html" class="post-card reveal" data-category="info">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#0d2d1a,#27ae60);color:rgba(255,255,255,0.5);">Family Stay</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-info">About Oideya</span>
-          <div class="post-card-title">Why a Whole-House Rental Beats a Hotel for Osaka Family Travel [2026]</div>
-          <div class="post-card-meta">2026.05.03</div>
-        </div>
-      </a>
+    <a href="posts/post-14-en.html" class="post-card reveal" data-category="gourmet">
+      <div class="post-card-img ph-b"><div class="post-card-img-placeholder">Flour Foods</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Food Nearby</span>
+        <div class="post-card-title sans-en">Osaka Flour Culture Guide [2026]: Takoyaki vs Okonomiyaki vs Negiyaki</div>
+        <div class="post-card-meta sans-en">2026.05.15</div>
+      </div>
+    </a>
 
-      <a href="posts/post-13-en.html" class="post-card reveal reveal-delay-1" data-category="info">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#0a1628,#2B4FBF);color:rgba(255,255,255,0.5);">Transport 2026</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-info">Osaka Travel</span>
-          <div class="post-card-title">Osaka Transport Guide [2026]: IC Cards, Trains & Buses Explained</div>
-          <div class="post-card-meta">2026.05.10</div>
-        </div>
-      </a>
+    <a href="posts/post-15-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img ph-a"><div class="post-card-img-placeholder">Rainy Day</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Sightseeing</span>
+        <div class="post-card-title sans-en">Osaka Rainy Day Activities for Families [2026]: 7 Indoor Spots</div>
+        <div class="post-card-meta sans-en">2026.05.20</div>
+      </div>
+    </a>
 
-      <a href="posts/post-14-en.html" class="post-card reveal reveal-delay-2" data-category="gourmet">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#1a0800,#c94a1a);color:rgba(255,255,255,0.5);">Konamon</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-gourmet">Local Food</span>
-          <div class="post-card-title">Osaka Flour Culture Guide [2026]: Takoyaki vs Okonomiyaki vs Negiyaki — What's the Difference?</div>
-          <div class="post-card-meta">2026.05.15</div>
-        </div>
-      </a>
+    <a href="posts/post-16-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img ph-b"><div class="post-card-img-placeholder">Rainy Season</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Sightseeing</span>
+        <div class="post-card-title sans-en">Rainy Season in Osaka: Indoor Experiences in a Traditional Whole-House Rental</div>
+        <div class="post-card-meta sans-en">2026.06.07</div>
+      </div>
+    </a>
 
-      <a href="posts/post-15-en.html" class="post-card reveal reveal-delay-3" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#0d1f2d 0%,#4a7fa5 100%);color:rgba(255,255,255,0.5);">Rainy Day</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Sightseeing</span>
-          <div class="post-card-title">Osaka Rainy Day Activities for Families: 7 Indoor Spots</div>
-          <div class="post-card-meta">May 20, 2026</div>
-        </div>
-      </a>
-      <a href="posts/post-16-en.html" class="post-card reveal reveal-delay-1" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#2c3e50 0%,#6fa8dc 100%);color:rgba(255,255,255,0.5);">Tsuyu Stay</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Sightseeing</span>
-          <div class="post-card-title">Rainy Season in Osaka: Indoor Experiences in a Traditional Whole-House Rental</div>
-          <div class="post-card-meta">June 7, 2026</div>
-        </div>
-      </a>
-      <a href="posts/post-17-en.html" class="post-card reveal reveal-delay-1" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#150a28 0%,#6b3fa0 100%);color:rgba(255,255,255,0.5);">Umeda Guide</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Sightseeing</span>
-          <div class="post-card-title">Umeda Area Guide [2026]: Shopping, Food &amp; Observation Decks Complete Guide</div>
-          <div class="post-card-meta">May 25, 2026</div>
-        </div>
-      </a>
-      <a href="posts/post-18-en.html" class="post-card reveal reveal-delay-1" data-category="info">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#100d0a 0%,#8a7a5f 100%);color:rgba(255,255,255,0.5);">Etiquette</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-info">Osaka &amp; Travel Info</span>
-          <div class="post-card-title">Japan Manners &amp; Etiquette Guide for Foreign Visitors [2026]</div>
-          <div class="post-card-meta">May 30, 2026</div>
-        </div>
-      </a>
-      <a href="posts/post-20-en.html" class="post-card reveal reveal-delay-1" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#062326 0%,#2a9d8f 100%);color:rgba(255,255,255,0.5);">Onsen</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Sightseeing</span>
-          <div class="post-card-title">A Day Trip Onsen from Oideya: Solaniwa Onsen OSAKA BAY TOWER Review [2026]</div>
-          <div class="post-card-meta">June 10, 2026</div>
-        </div>
-      </a>
-      <a href="posts/post-21-en.html" class="post-card reveal reveal-delay-1" data-category="spot">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#04222e 0%,#1a8cb0 100%);color:rgba(255,255,255,0.5);">Minamo Juso</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-spot">Sightseeing</span>
-          <div class="post-card-title">Minamo Juso: A Walking-Distance New Riverside Spot from Oideya — Field Report [2026]</div>
-          <div class="post-card-meta">August 25, 2026</div>
-        </div>
-      </a>
-      <a href="posts/post-22-en.html" class="post-card reveal reveal-delay-1" data-category="info">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#042e36 0%,#22b8cc 100%);color:rgba(255,255,255,0.5);">Arrival Guide</div>
-        </div>
-        <div class="post-card-body">
-          <span class="post-tag tag-info">Osaka &amp; Travel Info</span>
-          <div class="post-card-title">Wi-Fi, SIM &amp; Currency Exchange: A Complete Arrival Guide for Osaka [2026]</div>
-          <div class="post-card-meta">September 1, 2026</div>
-        </div>
-      </a>
-      <!-- ↓↓ 新しい記事はここにコピペして追加 ↓↓ -->
+    <a href="posts/post-17-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img ph-a"><div class="post-card-img-placeholder">Umeda Guide</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Sightseeing</span>
+        <div class="post-card-title sans-en">Umeda Area Guide [2026]: Shopping, Food &amp; Observation Decks</div>
+        <div class="post-card-meta sans-en">2026.05.25</div>
+      </div>
+    </a>
 
-    </div>
+    <a href="posts/post-18-en.html" class="post-card reveal" data-category="info">
+      <div class="post-card-img ph-b"><div class="post-card-img-placeholder">Manners Guide</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">Japan Manners &amp; Etiquette Guide for Foreign Visitors [2026]</div>
+        <div class="post-card-meta sans-en">2026.05.30</div>
+      </div>
+    </a>
+
+    <a href="posts/post-20-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img ph-a"><div class="post-card-img-placeholder">Day-Trip Onsen</div></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Sightseeing</span>
+        <div class="post-card-title sans-en">A Day Trip Onsen from Oideya: Solaniwa Onsen OSAKA BAY TOWER Review [2026]</div>
+        <div class="post-card-meta sans-en">2026.06.10</div>
+      </div>
+    </a>
+
+    <a href="posts/post-21-en.html" class="post-card reveal" data-category="spot">
+      <div class="post-card-img"><img src="../image/minamo-juso-sign.png" alt="Minamo Juso riverside market"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Sightseeing</span>
+        <div class="post-card-title sans-en">Minamo Juso: A Walking-Distance New Riverside Spot from Oideya — Field Report [2026]</div>
+        <div class="post-card-meta sans-en">2026.08.25</div>
+      </div>
+    </a>
+
+    <a href="posts/post-22-en.html" class="post-card reveal" data-category="info">
+      <div class="post-card-img"><img src="../image/osaka_photo1.png" alt="Arrival guide for Osaka"></div>
+      <div class="post-card-body">
+        <span class="post-tag sans-en">Osaka Travel</span>
+        <div class="post-card-title sans-en">Wi-Fi, SIM &amp; Currency Exchange: A Complete Arrival Guide for Osaka [2026]</div>
+        <div class="post-card-meta sans-en">2026.09.01</div>
+      </div>
+    </a>
+    <!-- ↓↓ paste new posts here ↓↓ -->
+
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Oideya</span>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../index.html#rooms">Rooms</a>
-    <a href="../index.html#access">Access</a>
-    <a href="../index.html#contact">Book Now</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="../image/logo-icon.png" alt="Oideya" width="30" height="30" style="width:30px; height:30px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.85;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span class="serif-en" style="color:var(--ink-4); font-size:17px;">Oideya</span>
+          <span class="serif-jp" style="color:var(--ink-3); font-size:13px;">おいでや</span>
+        </div>
+      </div>
+      <p class="sans-en">Yodogawa Ward, Osaka — 3 min walk from Kanzakigawa Station<br>A 1931 kominka renovated into a modern whole-house rental<br>Booking.com Traveller Review Awards 2026</p>
+    </div>
+    <div class="footer-cols sans-en">
+      <div class="footer-col">
+        <h5>Property</h5>
+        <a href="../index-en.html#concept">About Oideya</a>
+        <a href="../index-en.html#rooms">Rooms</a>
+        <a href="../index-en.html#guide">Guide</a>
+        <a href="../index-en.html#access">Access</a>
+        <a href="../index-en.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>More</h5>
+        <a href="index-en.html">Blog</a>
+        <a href="../reviews_en.html">Reviews</a>
+        <a href="https://www.instagram.com/oideya_osaka/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://x.com/Oideya_0saka" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
   </div>
-  <p class="footer-copy">© 2026 Oideya. All rights reserved. · <a href="../legal.html" style="color:inherit;">特定商取引法に基づく表記</a></p>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <p class="sans-en">Copyright (C) Oideya All Rights Reserved.</p>
+      <a href="../legal.html" class="sans-en">Legal Notice (Japanese)</a>
+    </div>
+    <div class="footer-langs sans-en">
+      <a href="index.html">日本語</a>
+      <a href="index-en.html" class="active">English</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-// カテゴリフィルター
-function filterPosts(category, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.post-card').forEach(card => {
-    if (category === 'all' || card.dataset.category === category) {
-      card.style.display = 'flex';
-    } else {
-      card.style.display = 'none';
-    }
+  const header = document.getElementById('header');
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
   });
-}
+  mobileMenu.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
 
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-reveals.forEach(el => io.observe(el));
+  function filterPosts(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.post-card').forEach(card => {
+      card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+    });
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
 </script>
 </body>
 </html>
