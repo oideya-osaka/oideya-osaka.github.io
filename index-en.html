@@ -733,6 +733,9 @@ footer {
   display: flex; justify-content: space-between; align-items: center;
 }
 .footer-bottom p { font-size: 0.7rem; color: rgba(255,255,255,0.25); }
+.footer-bottom-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-bottom-left a { font-size: 0.7rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-bottom-left a:hover { color: white; }
 .footer-bottom .langs { display: flex; gap: 16px; }
 .footer-bottom .langs a { font-size: 0.7rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
 .footer-bottom .langs a:hover { color: white; }
@@ -1346,7 +1349,10 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Oideya. All rights reserved.</p>
+    <div class="footer-bottom-left">
+      <p>© 2026 Oideya. All rights reserved.</p>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+    </div>
     <div class="langs">
       <a href="index.html">日本語</a>
       <a href="index-en.html" style="color:white;font-weight:600;">English</a>
