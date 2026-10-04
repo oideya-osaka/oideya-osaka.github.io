@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>特定商取引法に基づく表記 | Oideya</title>
-<meta name="description" content="Oideya（おいでや）の特定商取引法に基づく表記です。">
+<title>法律信息 | Oideya</title>
+<meta name="description" content="依据日本《特定商业交易法》公示的Oideya经营者信息与预订条款。">
 <link rel="alternate" hreflang="ja" href="legal.html">
 <link rel="alternate" hreflang="en" href="legal-en.html">
 <link rel="alternate" hreflang="zh-Hans" href="legal-zh.html">
 <link rel="icon" href="image/logo.PNG">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F7F4EE;
@@ -42,8 +42,8 @@
   a { text-decoration: none; color: inherit; }
   img { max-width: 100%; }
   .serif-jp { font-family: 'Shippori Mincho', serif; }
-  .serif-en { font-family: 'DM Serif Display', serif; }
-  .sans-en { font-family: 'Outfit', sans-serif; }
+  .serif-en { font-family: 'DM Serif Display', 'Noto Serif SC', serif; }
+  .sans-en { font-family: 'Outfit', 'Noto Sans SC', sans-serif; }
   .sans-jp { font-family: 'Noto Sans JP', sans-serif; }
   .eyebrow { color: var(--primary); font-size: 14px; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 18px; }
 
@@ -75,7 +75,8 @@
 
   /* ── PAGE HERO ── */
   .page-hero { background: var(--bg-dark); padding: 140px 20px 64px; text-align: center; }
-  .page-hero h1 { color: var(--cream); font-size: clamp(28px, 4.5vw, 42px); line-height: 1.5; font-weight: 500; margin: 0; }
+  .page-hero h1 { color: var(--cream); font-size: clamp(28px, 4.5vw, 42px); line-height: 1.5; font-weight: 500; margin: 0 0 16px; }
+  .page-hero p { color: #B8B2A4; font-size: 14px; line-height: 1.9; font-weight: 300; max-width: 480px; margin: 0 auto; }
 
   /* ── LEGAL CONTENT ── */
   .legal-wrap { max-width: 760px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) var(--gutter) 120px; }
@@ -84,7 +85,7 @@
   .legal-table tr:first-child { border-top: 1px solid var(--line-soft); }
   .legal-table th {
     text-align: left; vertical-align: top; font-weight: 500; color: var(--ink);
-    font-size: 14px; padding: 22px 20px 22px 0; width: 34%; white-space: nowrap;
+    font-size: 14px; padding: 22px 20px 22px 0; width: 38%;
   }
   .legal-table td {
     text-align: left; vertical-align: top; color: var(--ink-2); font-size: 14px;
@@ -122,94 +123,95 @@
 
 <!-- HEADER -->
 <header id="header">
-  <a href="index.html" class="serif-en nav-logo">
+  <a href="index-zh.html" class="serif-en nav-logo">
     <img src="image/logo-icon.png" alt="">
     Oideya
   </a>
-  <nav class="nav-links sans-jp">
-    <a href="index.html#concept">コンセプト</a>
-    <a href="index.html#rooms">お部屋</a>
-    <a href="index.html#guide">ご利用案内</a>
-    <a href="index.html#access">アクセス</a>
-    <a href="blog/index.html">ブログ</a>
-    <a href="index.html#faq">FAQ</a>
+  <nav class="nav-links sans-en">
+    <a href="index-zh.html#concept">理念</a>
+    <a href="index-zh.html#rooms">房间</a>
+    <a href="index-zh.html#guide">入住指南</a>
+    <a href="index-zh.html#access">交通</a>
+    <a href="blog/index-en.html">博客(英文)</a>
+    <a href="index-zh.html#faq">常见问题</a>
     <a href="https://www.instagram.com/oideya_osaka" target="_blank" rel="noopener">Instagram</a>
-    <a href="index.html#cta" class="nav-cta sans-jp">ご予約</a>
+    <a href="index-zh.html#cta" class="nav-cta">立即预订</a>
   </nav>
-  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+  <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
     <span></span><span></span>
   </button>
 </header>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu sans-jp" id="mobileMenu">
-  <a href="index.html#concept" data-close>コンセプト</a>
-  <a href="index.html#rooms" data-close>お部屋</a>
-  <a href="index.html#guide" data-close>ご利用案内</a>
-  <a href="index.html#access" data-close>アクセス</a>
-  <a href="blog/index.html">ブログ</a>
-  <a href="index.html#faq" data-close>FAQ</a>
+<div class="mobile-menu sans-en" id="mobileMenu">
+  <a href="index-zh.html#concept" data-close>理念</a>
+  <a href="index-zh.html#rooms" data-close>房间</a>
+  <a href="index-zh.html#guide" data-close>入住指南</a>
+  <a href="index-zh.html#access" data-close>交通</a>
+  <a href="blog/index-en.html">博客(英文)</a>
+  <a href="index-zh.html#faq" data-close>常见问题</a>
   <a href="https://www.instagram.com/oideya_osaka" target="_blank" rel="noopener">Instagram</a>
-  <a href="index.html#cta" class="nav-cta" data-close>ご予約</a>
+  <a href="index-zh.html#cta" class="nav-cta" data-close>立即预订</a>
 </div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="eyebrow sans-jp" style="justify-content:center; display:flex;">LEGAL NOTICE</div>
-  <h1 class="serif-jp">特定商取引法に基づく表記</h1>
+  <div class="eyebrow sans-en" style="justify-content:center; display:flex;">法律声明</div>
+  <h1 class="serif-en">法律信息</h1>
+  <p class="sans-en">依据日本《特定商取引法》(特定商业交易法)公示的预订条款与经营者信息。</p>
 </div>
 
 <!-- LEGAL CONTENT -->
 <div class="legal-wrap">
-  <table class="legal-table sans-jp">
+  <table class="legal-table sans-en">
     <tbody>
       <tr>
-        <th>事業者名</th>
-        <td>元 義貴</td>
+        <th>经营者名称</th>
+        <td>元義貴(Hajime Yoshiki)</td>
       </tr>
       <tr>
-        <th>運営責任者</th>
-        <td>元 義貴</td>
+        <th>负责人</th>
+        <td>元義貴(Hajime Yoshiki)</td>
       </tr>
       <tr>
-        <th>所在地</th>
-        <td>大阪府大阪市淀川区三津屋北1丁目9番15号</td>
+        <th>地址</th>
+        <td>日本大阪府大阪市淀川区三津屋北1-9-15</td>
       </tr>
       <tr>
-        <th>電話番号</th>
-        <td>お問い合わせはメールにて承っております。電話番号は、ご請求をいただければ遅滞なく開示いたします。</td>
+        <th>电话号码</th>
+        <td>咨询以电子邮件方式受理。如有需要,我们将在收到请求后及时告知电话号码。</td>
       </tr>
       <tr>
-        <th>連絡先</th>
+        <th>联系方式</th>
         <td><a href="mailto:oideya.osaka@gmail.com" style="border-bottom:1px solid var(--line); color:var(--primary);">oideya.osaka@gmail.com</a></td>
       </tr>
       <tr>
-        <th>販売価格</th>
-        <td>宿泊料金は、各予約ページに表示される金額によります。</td>
+        <th>价格</th>
+        <td>住宿费用以各预订页面所示为准。</td>
       </tr>
       <tr>
-        <th>商品代金以外の必要料金</th>
-        <td>特になし。</td>
+        <th>额外费用</th>
+        <td>无。</td>
       </tr>
       <tr>
-        <th>お支払い方法</th>
-        <td>クレジットカード決済（Stripe）</td>
+        <th>支付方式</th>
+        <td>信用卡(通过Stripe处理)</td>
       </tr>
       <tr>
-        <th>お支払い時期</th>
-        <td>チェックイン7日前に、登録いただいたクレジットカードにて自動決済いたします。</td>
+        <th>支付时间</th>
+        <td>入住前7天,自动从您登记的信用卡中扣款。</td>
       </tr>
       <tr>
-        <th>サービスの提供時期</th>
-        <td>チェックイン日より、ご予約いただいた宿泊期間中。</td>
+        <th>服务提供时间</th>
+        <td>自入住日起,在预订的住宿期间内提供。</td>
       </tr>
       <tr>
-        <th>キャンセル・返金について</th>
-        <td>チェックイン7日前までのキャンセルは無料です。それ以降のキャンセルは、1泊分の料金をキャンセル料として申し受けます。</td>
+        <th>取消与退款</th>
+        <td>入住前7天(含)以前取消免费;之后取消将收取一晚住宿费作为取消费。</td>
       </tr>
     </tbody>
   </table>
-  <p class="legal-note sans-jp">本ページの記載内容は、法令改正やサービス内容の変更に伴い、予告なく更新される場合があります。</p>
+  <p class="legal-note sans-en">本页内容可能因法律或服务变更而不经通知更新。以日语版 <a href="legal.html" style="color:var(--ink-3); border-bottom:1px solid var(--line);">legal.html</a> 为正式记录。</p>
 </div>
 
 <!-- FOOTER -->
@@ -223,21 +225,21 @@
           <span class="serif-jp" style="color:var(--ink-3); font-size:13px;">おいでや</span>
         </div>
       </div>
-      <p class="sans-jp">大阪市淀川区・神崎川駅徒歩3分<br>1931年築の古民家を和モダンに改装した一棟貸切宿<br>Booking.com Traveller Review Awards 2026 受賞</p>
+      <p class="sans-en">大阪市淀川区——距神崎川站步行3分钟<br>1931年古民家翻新而成的现代整栋包租民宿<br>Booking.com Traveller Review Awards 2026</p>
     </div>
-    <div class="footer-cols sans-jp">
+    <div class="footer-cols sans-en">
       <div class="footer-col">
-        <h5>施設</h5>
-        <a href="index.html#concept">Oideyaについて</a>
-        <a href="index.html#rooms">お部屋のご案内</a>
-        <a href="index.html#guide">ご利用案内</a>
-        <a href="index.html#access">アクセス</a>
-        <a href="index.html#faq">FAQ</a>
+        <h5>民宿</h5>
+        <a href="index-zh.html#concept">关于Oideya</a>
+        <a href="index-zh.html#rooms">房间</a>
+        <a href="index-zh.html#guide">入住指南</a>
+        <a href="index-zh.html#access">交通</a>
+        <a href="index-zh.html#faq">常见问题</a>
       </div>
       <div class="footer-col">
-        <h5>コンテンツ</h5>
-        <a href="blog/index.html">ブログ</a>
-        <a href="reviews.html">ゲストの声</a>
+        <h5>更多</h5>
+        <a href="blog/index-en.html">博客(英文)</a>
+        <a href="reviews_zh.html">住客评价</a>
         <a href="https://www.instagram.com/oideya_osaka/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://x.com/Oideya_0saka" target="_blank" rel="noopener">X (Twitter)</a>
       </div>
@@ -245,13 +247,13 @@
   </div>
   <div class="footer-bottom">
     <div class="footer-bottom-left">
-      <p class="sans-jp">Copyright (C) Oideya All Rights Reserved.</p>
-      <a href="legal.html" class="sans-jp">特定商取引法に基づく表記</a>
+      <p class="sans-en">Copyright (C) Oideya All Rights Reserved.</p>
+      <a href="legal-zh.html" class="sans-en">法律信息</a>
     </div>
-    <div class="footer-langs sans-jp">
-      <a href="legal.html" class="active">日本語</a>
+    <div class="footer-langs sans-en">
+      <a href="legal.html">日本語</a>
       <a href="legal-en.html">English</a>
-      <a href="legal-zh.html">简体中文</a>
+      <a href="legal-zh.html" class="active">简体中文</a>
     </div>
   </div>
 </footer>
