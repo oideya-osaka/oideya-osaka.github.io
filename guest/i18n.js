@@ -205,7 +205,7 @@ window.TERMS = {
 <h4>7. 免責事項</h4>
 <p>当施設は、お客様がルール違反または不注意により生じたトラブル・損害について、一切の責任を負いかねます。自然災害や不可抗力による営業停止、サービス中断が生じた場合、その損害に関して当施設は責任を負いません。当施設ホームページ等に記載された情報の正確性・完全性について、細心の注意を払っていますが、これを完全に保証するものではありません。</p>
 <h4>8. お問い合わせ窓口</h4>
-<p>事業者名：おいでや<br>所在地：大阪市淀川区三津屋北1-9-15<br>電話番号：080-5765-3275<br>メールアドレス：hazy.hajime@gmail.com</p>
+<p>事業者名：おいでや<br>所在地：大阪市淀川区三津屋北1-9-15<br>電話番号：080-5765-3275<br>メールアドレス：oideya.osaka@gmail.com</p>
 <p>本規約の内容や個人情報保護に関するご不明点などがございましたら、上記お問い合わせ先までご連絡ください。</p>`,
 
   en: `<h3>[Terms of Use and Personal Information Handling]</h3>
@@ -229,7 +229,7 @@ window.TERMS = {
 <h4>7. Disclaimer</h4>
 <p>Our facility accepts no responsibility for any trouble or damage caused by a guest's violation of the rules or carelessness. We are not responsible for damages resulting from suspension of business or interruption of service due to natural disasters or force majeure. While we pay close attention to the accuracy and completeness of the information on our website, we cannot fully guarantee it.</p>
 <h4>8. Contact information</h4>
-<p>Business name: Oideya<br>Address: 1-9-15 Mitsuyakita, Yodogawa-ku, Osaka<br>Phone: +81-80-5765-3275<br>Email: hazy.hajime@gmail.com</p>
+<p>Business name: Oideya<br>Address: 1-9-15 Mitsuyakita, Yodogawa-ku, Osaka<br>Phone: +81-80-5765-3275<br>Email: oideya.osaka@gmail.com</p>
 <p>If you have any questions about these terms or the protection of personal information, please contact us using the information above.</p>`,
 
   zh: `<h3>【使用条款及个人信息处理】</h3>
@@ -253,7 +253,7 @@ window.TERMS = {
 <h4>7. 免责声明</h4>
 <p>对于因客人违反规则或疏忽而造成的纠纷或损失，本设施概不负责。因自然灾害或不可抗力导致停业或服务中断时，本设施不对由此造成的损失承担责任。本设施网站等所刊载的信息，我们会尽力确保其准确性和完整性，但不作完全保证。</p>
 <h4>8. 联系方式</h4>
-<p>经营者名称：Oideya（おいでや）<br>地址：大阪市淀川区三津屋北1-9-15<br>电话：+81-80-5765-3275<br>电子邮件：hazy.hajime@gmail.com</p>
+<p>经营者名称：Oideya（おいでや）<br>地址：大阪市淀川区三津屋北1-9-15<br>电话：+81-80-5765-3275<br>电子邮件：oideya.osaka@gmail.com</p>
 <p>如对本条款内容或个人信息保护有任何疑问，请通过上述联系方式与我们联系。</p>
 <p class="small">※本条款以日文版为准，中文译文仅供参考。</p>`,
 
@@ -278,7 +278,7 @@ window.TERMS = {
 <h4>7. 면책 사항</h4>
 <p>당 시설은 고객의 규칙 위반 또는 부주의로 발생한 문제나 손해에 대해 일절 책임을 지지 않습니다. 자연재해나 불가항력으로 인한 영업 정지 또는 서비스 중단이 발생한 경우, 그로 인한 손해에 대해 당 시설은 책임을 지지 않습니다. 당 시설 홈페이지 등에 게재된 정보의 정확성과 완전성에 대해 세심한 주의를 기울이고 있으나, 이를 완전히 보증하지는 않습니다.</p>
 <h4>8. 문의처</h4>
-<p>사업자명: Oideya(おいでや)<br>소재지: 오사카시 요도가와구 미쓰야키타 1-9-15<br>전화: +81-80-5765-3275<br>이메일: hazy.hajime@gmail.com</p>
+<p>사업자명: Oideya(おいでや)<br>소재지: 오사카시 요도가와구 미쓰야키타 1-9-15<br>전화: +81-80-5765-3275<br>이메일: oideya.osaka@gmail.com</p>
 <p>본 약관의 내용이나 개인정보 보호에 관해 궁금하신 점이 있으시면 위 문의처로 연락해 주십시오.</p>
 <p class="small">※본 약관은 일본어판을 정본으로 하며, 한국어 번역은 참고용입니다.</p>`,
 };
