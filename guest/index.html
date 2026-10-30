@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src https://*.workers.dev https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; base-uri 'none'; form-action 'none'">
+<title>宿泊者名簿 | Guest Registration — Oideya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2B4FBF;
+    --primary-ink: #1d3a96;
+    --accent: #E8601A;
+    --ink: #1f2430;
+    --muted: #5d6474;
+    --line: #dfe3ec;
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --error: #c62828;
+    --ok: #2e7d32;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --primary: #7f9cf5; --primary-ink: #a9bcff; --accent: #ff8a4c;
+      --ink: #eceef3; --muted: #a6adbd; --line: #343a48; --bg: #14171e; --card: #1c2029;
+      --error: #ff7b7b; --ok: #7bd389;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Outfit", "Noto Sans JP", "Hiragino Sans", "Microsoft YaHei", "Malgun Gothic", system-ui, sans-serif;
+    font-size: 16px; line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 16px 16px calc(32px + env(safe-area-inset-bottom)); }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 0 16px; }
+  .brand { font-family: "DM Serif Display", serif; font-size: 22px; color: var(--primary); letter-spacing: .5px; }
+  .brand small { display: block; font-family: "Noto Sans JP", sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 0; }
+  select.lang {
+    appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    border-radius: 999px; padding: 8px 32px 8px 14px; font: inherit; font-size: 14px;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%; background-size: 5px 5px; background-repeat: no-repeat;
+  }
+  h1 { font-size: 24px; margin: 0 0 6px; line-height: 1.3; }
+  .lead { color: var(--muted); margin: 0 0 16px; font-size: 14px; }
+  .progress { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+  .bar { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: var(--primary); width: 0; transition: width .25s ease; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 18px; }
+  .card h2:focus { outline: none; }
+  .card h2 { font-size: 19px; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  .field { margin: 0 0 18px; }
+  .field > label, .field > .label { display: flex; align-items: baseline; gap: 8px; font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .req { font-size: 11px; font-weight: 500; color: #fff; background: var(--accent); border-radius: 4px; padding: 1px 6px; }
+  input[type=text], input[type=tel], input[type=date], select.input, textarea {
+    width: 100%; font: inherit; color: var(--ink); background: var(--card);
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 12px; min-height: 48px;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent); }
+  .invalid input, .invalid select, .invalid .photo-btn { border-color: var(--error) !important; }
+  .err { color: var(--error); font-size: 13px; margin-top: 4px; display: none; }
+  .invalid .err { display: block; }
+  .radios { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .radios label {
+    display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--line); border-radius: 10px;
+    padding: 12px; min-height: 48px; cursor: pointer; font-weight: 500;
+  }
+  .radios input { width: 20px; height: 20px; accent-color: var(--primary); margin: 0; }
+  .radios label:has(input:checked) { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+  .note { font-size: 13px; color: var(--muted); background: color-mix(in srgb, var(--accent) 8%, transparent); border-left: 3px solid var(--accent); padding: 10px 12px; border-radius: 6px; margin: 0 0 18px; }
+  .hint { font-size: 13px; color: var(--muted); margin: -2px 0 8px; }
+  .photo-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 56px;
+    border: 1.5px dashed var(--primary); border-radius: 10px; background: transparent; color: var(--primary);
+    font: inherit; font-weight: 600; cursor: pointer; padding: 12px;
+  }
+  .photo-preview { display: none; margin-top: 10px; position: relative; }
+  .photo-preview img { width: 100%; max-height: 260px; object-fit: contain; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); }
+  .has-photo .photo-preview { display: block; }
+  .passport-only[hidden] { display: none !important; }
+  .terms { max-height: 46vh; overflow: auto; border: 1px solid var(--line); border-radius: 10px; padding: 4px 14px; font-size: 14px; background: var(--bg); }
+  .terms h3 { font-size: 15px; } .terms h4 { font-size: 14px; margin: 14px 0 4px; } .terms p, .terms ul { margin: 6px 0; } .terms .small { font-size: 12px; color: var(--muted); }
+  .check { display: flex; gap: 12px; align-items: center; margin-top: 14px; padding: 14px; border: 1.5px solid var(--line); border-radius: 10px; font-weight: 600; cursor: pointer; }
+  .check input { width: 22px; height: 22px; accent-color: var(--primary); flex: none; }
+  .nav { display: flex; gap: 10px; margin-top: 18px; }
+  button.btn { flex: 1; min-height: 52px; border-radius: 12px; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer; border: 1.5px solid var(--primary); }
+  .btn.primary { background: var(--primary); color: #fff; }
+  .btn.ghost { background: transparent; color: var(--primary); flex: 0 0 34%; }
+  .btn:disabled { opacity: .6; cursor: progress; }
+  .secure { display: flex; align-items: center; gap: 6px; justify-content: center; font-size: 12px; color: var(--muted); margin-top: 14px; }
+  .alert { display: none; margin-top: 12px; padding: 12px; border-radius: 10px; background: color-mix(in srgb, var(--error) 10%, transparent); color: var(--error); font-size: 14px; }
+  .alert.show { display: block; }
+  .done { text-align: center; padding: 32px 18px; }
+  .done .mark { width: 64px; height: 64px; border-radius: 50%; background: color-mix(in srgb, var(--ok) 15%, transparent); color: var(--ok); display: grid; place-items: center; margin: 0 auto 12px; font-size: 32px; }
+  #turnstile { margin-top: 14px; min-height: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Oideya<small>おいでや</small></div>
+    <label class="sr" for="lang">Language</label>
+    <select id="lang" class="lang" aria-label="Language"></select>
+  </header>
+  <h1 id="title"></h1>
+  <p class="lead" id="lead"></p>
+  <div class="progress" id="progressRow"><div class="bar"><i id="bar"></i></div><span id="stepLabel"></span></div>
+  <main id="app" class="card" aria-live="polite"></main>
+  <div class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span id="secure"></span></div>
+</div>
+<script src="config.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
